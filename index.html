@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botion Cards - High-Tech Business Cards</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stripe@11.0.0/dist/stripe.js"></script>
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --text-color: #333;
+            --bg-color: #ffffff;
+            --secondary-bg: #f7f7f7;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background-color: var(--bg-color);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        h1, h2 {
+            font-weight: 700;
+        }
+        #hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg-color);
+            text-align: center;
+            padding-top: 60px;
+        }
+        #model-container {
+            width: 300px;
+            height: 300px;
+            margin-bottom: 30px;
+        }
+        .use-case {
+            background-color: var(--secondary-bg);
+            margin: 40px 0;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .product-button {
+            background-color: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .product-button:hover {
+            background-color: #27ae60;
+        }
+        #faq {
+            background-color: var(--secondary-bg);
+            padding: 40px;
+            margin-top: 40px;
+            border-radius: 8px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question h3 {
+            font-weight: 600;
+        }
+        footer {
+            background-color: var(--secondary-bg);
+            color: var(--text-color);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        #changing-text {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Botion Cards</div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#tech-pro">Tech Professionals</a></li>
+                    <li><a href="#small-biz">Small Businesses</a></li>
+                    <li><a href="#makerspace">Makerspaces</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <div id="model-container"></div>
+            <h1>Botion Cards</h1>
+            <p>A business card that is <span id="changing-text"></span></p>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="tech-pro" class="use-case">
+            <h2>For Tech Professionals</h2>
+            <p>Showcase your tech-savvy nature with our cutting-edge NFC-enabled cards.</p>
+            <button class="product-button" data-product-id="tech_pro_card">Buy Now</button>
+        </section>
+
+        <section id="small-biz" class="use-case">
+            <h2>For Small Businesses</h2>
+            <p>Make a big impression with our sleek, modern designs perfect for startups and SMEs.</p>
+            <button class="product-button" data-product-id="small_biz_card">Buy Now</button>
+        </section>
+
+        <section id="makerspace" class="use-case">
+            <h2>For Makerspaces</h2>
+            <p>Inspire creativity with our customizable, tech-infused cards for innovators and makers.</p>
+            <button class="product-button" data-product-id="makerspace_card">Buy Now</button>
+        </section>
+
+        <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="question">
+                <h3>What makes Botion Cards high-tech?</h3>
+                <p>Our cards feature NFC technology, allowing instant digital information sharing with a simple tap. If you've used Apple Pay or tap tickets for public transit, you're already familiar with how our Botion Cards work.</p>
+            </div>
+            <div class="question">
+                <h3>Are Botion Cards sustainable?</h3>
+                <p>Yes, we use eco-friendly materials, and our digital features reduce the need for reprints. By transitioning to digital information sharing, our customers save thousands of sheets of paper each year, significantly lowering their environmental footprint and reducing costs associated with printing and reprinting traditional business cards.</p>
+            </div>
+            <div class="question">
+                <h3>How do Botion Cards save costs and paper?</h3>
+                <p>Switching to Botion Cards can result in substantial cost savings. Traditional business cards often require frequent updates and reprints, leading to continuous expenses. With Botion Cards, updates are digital and instant, eliminating the need for reprints. On average, users save thousands of sheets of paper per year, contributing to both financial savings and environmental sustainability.</p>
+            </div>
+            <div class="question">
+                <h3>Are Botion Cards compatible with my device?</h3>
+                <p>Yes, Botion Cards are compatible with any modern smartphone that supports NFC technology. This includes most recent models of iOS and Android devices, ensuring a seamless experience for sharing your information digitally.</p>
+            </div>
+            <div class="question">
+                <h3>How do I program my Botion Card?</h3>
+                <p>Programming your Botion Card is simple and can be done with our open-source app available on the App Store called BotionNFC. For Android users, the NFC Tools app works seamlessly with Botion Cards, allowing you to easily update and manage your digital information.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Botion Cards. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // 3D model animation
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, 300 / 300, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(300, 300);
+        document.getElementById('model-container').appendChild(renderer.domElement);
+
+        const geometry = new THREE.BoxGeometry(3, 2, 0.1);
+        const material = new THREE.MeshBasicMaterial({ color: 0x2ecc71 });
+        const card = new THREE.Mesh(geometry, material);
+        scene.add(card);
+
+        camera.position.z = 5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            card.rotation.x += 0.01;
+            card.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Animated text
+        const words = ['Sustainable', 'High-tech', 'Modern'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        const changingText = document.getElementById('changing-text');
+        
+        function typeWord() {
+            if (charIndex < words[wordIndex].length) {
+                changingText.textContent += words[wordIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWord, 100);
+            } else {
+                setTimeout(eraseWord, 1000);
+            }
+        }
+
+        function eraseWord() {
+            if (charIndex > 0) {
+                changingText.textContent = words[wordIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(eraseWord, 50);
+            } else {
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(typeWord, 500);
+            }
+        }
+
+        typeWord();
+
+        // Stripe integration
+        const stripe = Stripe('your_publishable_key');
+        document.querySelectorAll('.product-button').forEach(button => {
+            button.addEventListener('click', async (event) => {
+                const productId = event.target.dataset.productId;
+                const response = await fetch('/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ productId: productId }),
+                });
+                const session = await response.json();
+                const result = await stripe.redirectToCheckout({
+                    sessionId: session.id,
+                });
+                if (result.error) {
+                    console.error(result.error.message);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
