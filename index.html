@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Botion Cards - High-Tech Business Cards</title>
+    <title>Botion Cards</title>
     <link rel="icon" href="BotionNFC.png" type="image/png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -301,7 +301,7 @@
 
         <section id="hero">
             <div class="container">
-                <h1>Botion Cards</h1>
+                <h1>Botion Card</h1>
                 <p>A business card that is <span id="changing-text"></span></p>
             </div>
         </section>
@@ -321,9 +321,30 @@
             </section>
 
             <section id="makerspace" class="use-case">
-                <h2>For Makerspaces</h2>
-                <p>Inspire creativity with our customizable, tech-infused cards for innovators and makers.</p>
-                <button class="product-button" data-product-id="makerspace_card">Buy Now</button>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div style="flex: 1; padding-right: 20px;">
+                        <h2>For Makerspaces</h2>
+                        <h3>Made by a maker for makers! </h3>
+                        <p>Inspire creativity with our customizable, tech-infused cards for innovators and makers. Our workshop
+                            offers a unique learning experience:</p>
+                        <ol>
+                            <li><strong>Design Your Digital Identity:</strong> Craft your personal logo or stylize your name.</li>
+                            <li><strong>Master the Laser Cutter:</strong> Bring your design to life with precision fabrication.</li>
+                            <li><strong>Program Your NFC Chip:</strong> Dive into NFC technology, storing your info and unlocking
+                                possibilities.</li>
+                        </ol>
+                        <p>Leave with a unique business card that showcases your new design, fabrication, and programming skills.
+                            It's not just a card—it's a conversation starter and a testament to your maker journey!</p>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                        <img src="botion_laser.jpg" alt="Design Process"
+                            style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
+                        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+                        <stripe-buy-button buy-button-id="buy_btn_1PkfaLCJ07lOkLzsYYCOGsc6"
+                            publishable-key="pk_live_51PB3zUCJ07lOkLzsUiWON6eaKhTOT2ykpo2hQprF88V2EIuR8MO16ay9H9adAFjqgPoaezeSokIpqqtizxAz7gcl00TKsDTDIZ">
+                        </stripe-buy-button>
+                    </div>
+                </div>
             </section>
 
             <section id="faq">
