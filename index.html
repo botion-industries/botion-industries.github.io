@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@
             --bg-color: #ffffff;
             --secondary-bg: #f7f7f7;
         }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -25,11 +27,13 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
+
         .topnav {
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
@@ -43,19 +47,23 @@
             padding: 10px 20px;
             transition: all 0.3s ease;
         }
+
         .topnav.scrolled {
             background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+
         .topnav .logo {
             font-size: 24px;
             font-weight: bold;
             color: var(--primary-color);
             text-decoration: none;
         }
+
         .topnav #myLinks {
             display: flex;
         }
+
         .topnav a {
             color: var(--text-color);
             padding: 14px 16px;
@@ -63,28 +71,27 @@
             font-size: 17px;
             transition: color 0.3s ease;
         }
+
         .topnav a:hover {
             color: var(--primary-color);
         }
+
         .topnav .icon {
             display: none;
         }
-        
+
         #sections-container {
             position: relative;
             z-index: 20;
             background-color: var(--bg-color);
         }
-        #content {
-            position: relative;
-            z-index: 1; /* Place the content above the 3D model */
-            background: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.9) 100%);
-        }
+
         #content {
             position: relative;
             z-index: 1;
-            padding-top: 80px;
+            background: transparent;
         }
+
         #model-container {
             position: fixed;
             top: 0;
@@ -94,12 +101,6 @@
             z-index: 0;
         }
 
-        #content {
-            position: relative;
-            z-index: 1;
-            background: transparent; /* Remove gradient background */
-        }
-
         #hero {
             height: 100vh;
             display: flex;
@@ -107,11 +108,11 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: transparent; /* Ensure hero is transparent */
+            background: transparent;
         }
 
-        #hero h1, #hero p {
-            color: #000000; /* White text for better visibility */
+        #hero h1 {
+            padding-top: 60%;
         }
 
         #changing-text {
@@ -119,43 +120,27 @@
             font-weight: 600;
         }
 
-
         h1 {
             font-size: 4rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            opacity: 0;
-            padding-top: 50%;
-            transform: translateY(-200px);
-            animation: fadeInUp 1s forwards;
         }
+
         #hero p {
             font-size: 1.75rem;
             margin-top: 0;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s forwards 0.5s;
+            color: #000000;
+
         }
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+
         .use-case {
-            background-color: rgba(247,247,247,0.9); /* Semi-transparent background */
+            background-color: rgba(247, 247, 247, 0.9);
             margin: 40px 0;
             padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .use-case.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+
         .product-button {
             background-color: var(--primary-color);
             border: none;
@@ -172,11 +157,13 @@
             position: relative;
             overflow: hidden;
         }
+
         .product-button:hover {
             background-color: #27ae60;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
         .product-button::after {
             content: '';
             position: absolute;
@@ -190,60 +177,63 @@
             transform: scale(1, 1) translate(-50%);
             transform-origin: 50% 50%;
         }
+
         @keyframes ripple {
             0% {
                 transform: scale(0, 0);
                 opacity: 1;
             }
+
             20% {
                 transform: scale(25, 25);
                 opacity: 1;
             }
+
             100% {
                 opacity: 0;
                 transform: scale(40, 40);
             }
         }
+
         .product-button:focus:not(:active)::after {
             animation: ripple 1s ease-out;
         }
+
         #faq {
             background-color: var(--secondary-bg);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 40px;
             margin-top: 40px;
             border-radius: 8px;
-            margin-bottom:0px;
+            margin-bottom: 0px;
         }
+
         .question {
             margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
         }
-        .question.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+
         .question h3 {
             font-weight: 600;
             cursor: pointer;
             transition: color 0.3s ease;
         }
+
         .question h3:hover {
             color: var(--primary-color);
         }
+
         .question p {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease, opacity 0.5s ease;
             opacity: 0;
         }
+
         .question.active p {
             max-height: 1000px;
             opacity: 1;
         }
+
         footer {
             background-color: var(--secondary-bg);
             color: var(--text-color);
@@ -251,9 +241,11 @@
             padding: 20px 0;
             margin-top: 40px;
         }
+
         .topnav #myLinks {
             padding-right: 10px;
         }
+
         @media screen and (max-width: 750px) {
             .topnav #myLinks {
                 display: none;
@@ -262,13 +254,14 @@
                 position: absolute;
                 top: 100%;
                 left: 0;
-            
                 background-color: rgba(255, 255, 255, 0.95);
             }
+
             .topnav a {
                 padding: 15px;
                 text-align: left;
             }
+
             .topnav .icon {
                 display: block;
                 position: absolute;
@@ -276,15 +269,17 @@
                 top: 50%;
                 transform: translateY(-50%);
             }
+
             .topnav.responsive #myLinks {
                 display: flex;
             }
         }
     </style>
 </head>
+
 <body>
     <div id="model-container"></div>
-    
+
     <div id="content">
         <nav class="topnav" id="myTopnav">
             <a href="#home" class="logo">Botion Cards</a>
@@ -306,9 +301,9 @@
             </div>
         </section>
 
-    <div id="sections-container">
+        <div id="sections-container">
 
-        <section id="tech-pro" class="use-case visible">
+            <section id="tech-pro" class="use-case">
                 <h2>For Tech Professionals</h2>
                 <p>Showcase your tech-savvy nature with our cutting-edge NFC-enabled cards.</p>
                 <button class="product-button" data-product-id="tech_pro_card">Buy Now</button>
@@ -321,29 +316,31 @@
             </section>
 
             <section id="makerspace" class="use-case">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                    <div style="flex: 1; padding-right: 20px;">
-                        <h2>For Makerspaces</h2>
-                        <h3>Made by a maker for makers! </h3>
-                        <p>Inspire creativity with our customizable, tech-infused cards for innovators and makers. Our workshop
-                            offers a unique learning experience:</p>
-                        <ol>
-                            <li><strong>Design Your Digital Identity:</strong> Craft your personal logo or stylize your name.</li>
-                            <li><strong>Master the Laser Cutter:</strong> Bring your design to life with precision fabrication.</li>
-                            <li><strong>Program Your NFC Chip:</strong> Dive into NFC technology, storing your info and unlocking
-                                possibilities.</li>
-                        </ol>
-                        <p>Leave with a unique business card that showcases your new design, fabrication, and programming skills.
-                            It's not just a card—it's a conversation starter and a testament to your maker journey!</p>
-                    </div>
-                    <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                        <img src="botion_laser.jpg" alt="Design Process"
-                            style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
-                        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-                        <stripe-buy-button buy-button-id="buy_btn_1PkfaLCJ07lOkLzsYYCOGsc6"
-                            publishable-key="pk_live_51PB3zUCJ07lOkLzsUiWON6eaKhTOT2ykpo2hQprF88V2EIuR8MO16ay9H9adAFjqgPoaezeSokIpqqtizxAz7gcl00TKsDTDIZ">
-                        </stripe-buy-button>
-                    </div>
+                <h2>For Makerspaces</h2>
+                <h3>Made by a maker for makers!</h3>
+                <p>Inspire creativity with our customizable, tech-infused cards for innovators and makers. Our workshop offers a
+                    unique learning experience:</p>
+                <ol>
+                    <li><strong>Design Your Digital Identity:</strong> Craft your personal logo or stylize your name.</li>
+                    <li><strong>Master the Laser Cutter:</strong> Bring your design to life with precision fabrication.</li>
+                    <li><strong>Program Your NFC Chip:</strong> Dive into NFC technology, storing your info and unlocking
+                        possibilities.</li>
+                </ol>
+                <p>Leave with a unique business card that showcases your new design, fabrication, and programming skills. It's not
+                    just a card—it's a conversation starter and a testament to your maker journey!</p>
+            
+                <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                    <img src="botion_design.png" alt="Laser Cutter in Action" style="width: 48%; border-radius: 10px;">
+                    <img src="botion_laser.JPG" alt="Finished Botion Card" style="width: 48%; border-radius: 10px;">
+                </div>
+            
+                <div style="text-align: center; margin-top: 30px;">
+                    <h3>Makerspace Workshop Pack</h3>
+                    <p style="font-size: 24px; font-weight: bold;">$99</p>
+                    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+                    <stripe-buy-button buy-button-id="buy_btn_1PkfaLCJ07lOkLzsYYCOGsc6"
+                        publishable-key="pk_live_51PB3zUCJ07lOkLzsUiWON6eaKhTOT2ykpo2hQprF88V2EIuR8MO16ay9H9adAFjqgPoaezeSokIpqqtizxAz7gcl00TKsDTDIZ">
+                    </stripe-buy-button>
                 </div>
             </section>
 
@@ -351,40 +348,53 @@
                 <h2>Frequently Asked Questions</h2>
                 <div class="question">
                     <h3>What makes Botion Cards high-tech?</h3>
-                    <p>Our cards feature NFC technology, allowing instant digital information sharing with a simple tap. If you've used Apple Pay or tap tickets for public transit, you're already familiar with how our Botion Cards work.</p>
+                    <p>Our cards feature NFC technology, allowing instant digital information sharing with a simple tap.
+                        If you've used Apple Pay or tap tickets for public transit, you're already familiar with how our
+                        Botion Cards work.</p>
                 </div>
                 <div class="question">
                     <h3>Are Botion Cards sustainable?</h3>
-                    <p>Yes, we use eco-friendly materials and our digital features reduce the need for reprints. By transitioning to digital information sharing, our customers save thousands of sheets of paper each year, significantly lowering their environmental footprint and reducing costs associated with printing and reprinting traditional business cards.</p>
+                    <p>Yes, we use eco-friendly materials and our digital features reduce the need for reprints. By
+                        transitioning to digital information sharing, our customers save thousands of sheets of paper
+                        each year, significantly lowering their environmental footprint and reducing costs associated
+                        with printing and reprinting traditional business cards.</p>
                 </div>
                 <div class="question">
                     <h3>How do Botion Cards save costs and paper?</h3>
-                    <p>Switching to Botion Cards can result in substantial cost savings. Traditional business cards often require frequent updates and reprints, leading to continuous expenses. With Botion Cards, updates are digital and instant, eliminating the need for reprints. On average, users save thousands of sheets of paper per year, contributing to both financial savings and environmental sustainability.</p>
+                    <p>Switching to Botion Cards can result in substantial cost savings. Traditional business cards
+                        often require frequent updates and reprints, leading to continuous expenses. With Botion Cards,
+                        updates are digital and instant, eliminating the need for reprints. On average, users save
+                        thousands of sheets of paper per year, contributing to both financial savings and environmental
+                        sustainability.</p>
                 </div>
                 <div class="question">
                     <h3>Are Botion Cards compatible with my device?</h3>
-                    <p>Yes, Botion Cards are compatible with any modern smartphone that supports NFC technology. This includes most recent models of iOS and Android devices, ensuring a seamless experience for sharing your information digitally.</p>
+                    <p>Yes, Botion Cards are compatible with any modern smartphone that supports NFC technology. This
+                        includes most recent models of iOS and Android devices, ensuring a seamless experience for
+                        sharing your information digitally.</p>
                 </div>
                 <div class="question">
                     <h3>How do I program my Botion Card?</h3>
-                    <p>Programming your Botion Card is simple and can be done with our open-source app available on the App Store called BotionNFC. For Android users, the NFC Tools app works seamlessly with Botion Cards, allowing you to easily update and manage your digital information.</p>
+                    <p>Programming your Botion Card is simple and can be done with our open-source app available on the
+                        App Store called BotionNFC. For Android users, the NFC Tools app works seamlessly with Botion
+                        Cards, allowing you to easily update and manage your digital information.</p>
                 </div>
             </section>
-            
+
         </div>
 
         <footer>
             <p>&copy; 2024 Botion Cards. All rights reserved.</p>
         </footer>
     </div>
-    <script>
-        const scene = new THREE.Scene();
+<script>
+    const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ 
+    const renderer = new THREE.WebGLRenderer({
         alpha: true,
         antialias: true
     });
-    
+
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('model-container').appendChild(renderer.domElement);
@@ -402,12 +412,12 @@
         'card.gltf',
         function (gltf) {
             card = gltf.scene;
-            
+
             const scaleFactor = 1500;
             card.scale.set(scaleFactor, scaleFactor, scaleFactor);
-            
+
             card.position.set(-128 * scaleFactor / 1000, 98 * scaleFactor / 1000, -100);
-            
+
             card.traverse((child) => {
                 if (child.isMesh) {
                     child.material.side = THREE.DoubleSide;
@@ -444,68 +454,50 @@
     animate();
 
     window.addEventListener('scroll', () => {
-            if (card) {
-                const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+        if (card) {
+            const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
 
-                // Get the position of the FAQ section
-                const faqSection = document.getElementById('faq');
-                const faqPosition = faqSection.getBoundingClientRect().top + window.scrollY;
+            // Get the position of the FAQ section
+            const faqSection = document.getElementById('faq');
+            const faqPosition = faqSection.getBoundingClientRect().top + window.scrollY;
 
-                // Check if we've scrolled to the FAQ section
-                if (window.scrollY >= faqPosition - window.innerHeight) {
-                    // Hide the card
-                    card.visible = false;
-                } else {
-                    // Show and animate the card
-                    card.visible = true;
-
-                    const maxRotation = Math.PI / 4;
-                    const yRotation = scrollPercent * maxRotation;
-                    const xRotation = Math.sin(scrollPercent * Math.PI) * (maxRotation / 2);
-
-                    card.rotation.y = yRotation;
-                    card.rotation.x = xRotation;
-
-                    // Move the card down as the user scrolls, but stop before the FAQ section
-                    const maxScroll = faqPosition - window.innerHeight;
-                    const currentScroll = Math.min(window.scrollY, maxScroll);
-                    const cardScrollPercent = currentScroll / maxScroll;
-                    card.position.y = 98 * 1.5 - (cardScrollPercent * 200);
-                }
-            }
-
-            // Rest of the scroll event code remains the same
-            const nav = document.querySelector('.topnav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
+            // Check if we've scrolled to the FAQ section
+            if (window.scrollY >= faqPosition - window.innerHeight) {
+                // Hide the card
+                card.visible = false;
             } else {
-                nav.classList.remove('scrolled');
+                // Show and animate the card
+                card.visible = true;
+
+                const maxRotation = Math.PI / 4;
+                const yRotation = scrollPercent * maxRotation;
+                const xRotation = Math.sin(scrollPercent * Math.PI) * (maxRotation / 2);
+
+                card.rotation.y = yRotation;
+                card.rotation.x = xRotation;
+
+                // Move the card down as the user scrolls, but stop before the FAQ section
+                const maxScroll = faqPosition - window.innerHeight;
+                const currentScroll = Math.min(window.scrollY, maxScroll);
+                const cardScrollPercent = currentScroll / maxScroll;
+                card.position.y = 98 * 1.5 - (cardScrollPercent * 200);
             }
+        }
 
-            // Check for elements to animate
-            const elements = document.querySelectorAll('.use-case, .question');
-            elements.forEach(el => {
-                if (isElementInViewport(el)) {
-                    el.classList.add('visible');
-                }
-            });
-        });
-
-    function isElementInViewport(el) {
-        const rect = el.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    }
+        // Update navigation bar on scroll
+        const nav = document.querySelector('.topnav');
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
 
     const words = ['Sustainable', 'High-tech', 'Modern'];
     let wordIndex = 0;
     let charIndex = 0;
     const changingText = document.getElementById('changing-text');
-    
+
     function typeWord() {
         if (charIndex < words[wordIndex].length) {
             changingText.textContent += words[wordIndex].charAt(charIndex);
@@ -559,30 +551,22 @@
     // Button click animation
     const buttons = document.querySelectorAll('.product-button');
     buttons.forEach(button => {
-        button.addEventListener('click', function(e) {
+        button.addEventListener('click', function (e) {
             let x = e.clientX - e.target.offsetLeft;
             let y = e.clientY - e.target.offsetTop;
-            
+
             let ripple = document.createElement('span');
             ripple.style.left = `${x}px`;
             ripple.style.top = `${y}px`;
-            
+
             this.appendChild(ripple);
-            
+
             setTimeout(() => {
                 ripple.remove();
             }, 600); // 600ms = duration of the ripple animation
         });
     });
-
-    // Initialize animations on page load
-    window.addEventListener('load', () => {
-        document.querySelectorAll('.use-case, .question').forEach(el => {
-            if (isElementInViewport(el)) {
-                el.classList.add('visible');
-            }
-        });
-    });
 </script>
 </body>
+
 </html>
