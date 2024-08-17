@@ -7,6 +7,7 @@
     <title>Botion Cards</title>
     <link rel="icon" href="BotionNFC.png" type="image/png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/stripe@11.0.0/dist/stripe.js"></script>
@@ -19,7 +20,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto Mono', monospace;
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
@@ -46,6 +47,7 @@
             align-items: center;
             padding: 10px 20px;
             transition: all 0.3s ease;
+            box-sizing: border-box;
         }
 
         .topnav.scrolled {
@@ -101,36 +103,46 @@
             z-index: 0;
         }
 
-        #hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: transparent;
-        }
+#hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    background: transparent;
+    padding-bottom: 50vh; /* Increased from 20vh to 25vh */
+}
 
-        #hero h1 {
-            padding-top: 60%;
-        }
+#hero h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
 
-        #changing-text {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
+#hero p {
+    font-size: 1.75rem;
+    margin-top: 0;
+    color: #000000;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}   
+#changing-text {
+    color: var(--primary-color);
+    font-weight: 600;
+    display: inline-block;
+    min-width: 150px;
+    text-align: left;
+    padding-left: 20px;
+}
+
 
         h1 {
             font-size: 4rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-        }
-
-        #hero p {
-            font-size: 1.75rem;
-            margin-top: 0;
-            color: #000000;
-
         }
 
         .use-case {
@@ -297,49 +309,46 @@
         <section id="hero">
             <div class="container">
                 <h1>Botion Card</h1>
-                <p>A business card that is <span id="changing-text"></span></p>
+                <p>A business card that is  <span id="changing-text"></span></p>
             </div>
         </section>
 
         <div id="sections-container">
-
             <section id="tech-pro" class="use-case">
                 <h2>For Tech Professionals</h2>
                 <p>Showcase your tech-savvy nature with our cutting-edge NFC-enabled cards.</p>
-                <button class="product-button" data-product-id="tech_pro_card">Buy Now</button>
             </section>
 
             <section id="small-biz" class="use-case">
                 <h2>For Small Businesses</h2>
                 <p>Make a big impression with our sleek, modern designs perfect for startups and SMEs.</p>
-                <button class="product-button" data-product-id="small_biz_card">Buy Now</button>
             </section>
 
             <section id="makerspace" class="use-case">
                 <h2>For Makerspaces</h2>
                 <h3>Made by a maker for makers!</h3>
-                <p>Inspire creativity with our customizable, tech-infused cards for innovators and makers. Our workshop offers a
-                    unique learning experience:</p>
+                <p>Inspire creativity with our customizable, tech-infused cards for innovators and makers. Our workshop
+                    offers a unique learning experience:</p>
                 <ol>
-                    <li><strong>Design Your Digital Identity:</strong> Craft your personal logo or stylize your name.</li>
-                    <li><strong>Master the Laser Cutter:</strong> Bring your design to life with precision fabrication.</li>
-                    <li><strong>Program Your NFC Chip:</strong> Dive into NFC technology, storing your info and unlocking
-                        possibilities.</li>
+                    <li><strong>Design Your Digital Identity:</strong> Craft your personal logo or stylize your name.
+                    </li>
+                    <li><strong>Master the Laser Cutter:</strong> Bring your design to life with precision fabrication.
+                    </li>
+                    <li><strong>Program Your NFC Chip:</strong> Dive into NFC technology, storing your info and
+                        unlocking possibilities.</li>
                 </ol>
-                <p>Leave with a unique business card that showcases your new design, fabrication, and programming skills. It's not
-                    just a card—it's a conversation starter and a testament to your maker journey!</p>
-            
+                <p>Leave with a unique business card that showcases your new design, fabrication, and programming
+                    skills. It's not just a card—it's a conversation starter and a testament to your maker journey!</p>
+
                 <div style="display: flex; justify-content: space-between; margin-top: 20px;">
                     <img src="botion_design.png" alt="Laser Cutter in Action" style="width: 48%; border-radius: 10px;">
                     <img src="botion_laser.JPG" alt="Finished Botion Card" style="width: 48%; border-radius: 10px;">
                 </div>
-            
+
                 <div style="text-align: center; margin-top: 30px;">
-                    <h3>Makerspace Workshop Pack</h3>
-                    <p style="font-size: 24px; font-weight: bold;">$99</p>
-                    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+                    <script async src="https://js.stripe.com/v3/buy-button.js" ></script>
                     <stripe-buy-button buy-button-id="buy_btn_1PkfaLCJ07lOkLzsYYCOGsc6"
-                        publishable-key="pk_live_51PB3zUCJ07lOkLzsUiWON6eaKhTOT2ykpo2hQprF88V2EIuR8MO16ay9H9adAFjqgPoaezeSokIpqqtizxAz7gcl00TKsDTDIZ">
+                        publishable-key="pk_live_51PB3zUCJ07lOkLzsUiWON6eaKhTOT2ykpo2hQprF88V2EIuR8MO16ay9H9adAFjqgPoaezeSokIpqqtizxAz7gcl00TKsDTDIZ" style="width: 50%">
                     </stripe-buy-button>
                 </div>
             </section>
@@ -380,193 +389,193 @@
                         Cards, allowing you to easily update and manage your digital information.</p>
                 </div>
             </section>
-
         </div>
 
         <footer>
             <p>&copy; 2024 Botion Cards. All rights reserved.</p>
         </footer>
     </div>
-<script>
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({
-        alpha: true,
-        antialias: true
-    });
 
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById('model-container').appendChild(renderer.domElement);
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({
+            alpha: true,
+            antialias: true
+        });
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-    scene.add(ambientLight);
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    directionalLight.position.set(1, 1, 1);
-    scene.add(directionalLight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('model-container').appendChild(renderer.domElement);
 
-    let card;
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff,0.8);
+            directionalLight.position.set(1, 1, 1);
+            scene.add(directionalLight);
 
-    const loader = new THREE.GLTFLoader();
-    loader.load(
-        'card.gltf',
-        function (gltf) {
-            card = gltf.scene;
+            let card;
 
-            const scaleFactor = 1500;
-            card.scale.set(scaleFactor, scaleFactor, scaleFactor);
+            const loader = new THREE.GLTFLoader();
+            loader.load(
+                'card.gltf',
+                function (gltf) {
+                    card = gltf.scene;
 
-            card.position.set(-128 * scaleFactor / 1000, 98 * scaleFactor / 1000, -100);
+                    const scaleFactor = 1500;
+                    card.scale.set(scaleFactor, scaleFactor, scaleFactor);
 
-            card.traverse((child) => {
-                if (child.isMesh) {
-                    child.material.side = THREE.DoubleSide;
-                    child.material.needsUpdate = true;
+                    card.position.set(-128 * scaleFactor / 1000, 98 * scaleFactor / 1000, -100);
+
+                    card.traverse((child) => {
+                        if (child.isMesh) {
+                            child.material.side = THREE.DoubleSide;
+                            child.material.needsUpdate = true;
+                        }
+                    });
+
+                    scene.add(card);
+
+                    camera.position.z = 250;
+
+                    renderer.render(scene, camera);
+                },
+                function (xhr) {
+                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                },
+                function (error) {
+                    console.error('An error happened', error);
+                }
+            );
+
+            window.addEventListener('resize', onWindowResize, false);
+
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.addEventListener('scroll', () => {
+                if (card) {
+                    const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+
+                    // Get the position of the FAQ section
+                    const faqSection = document.getElementById('faq');
+                    const faqPosition = faqSection.getBoundingClientRect().top + window.scrollY;
+
+                    // Check if we've scrolled to the FAQ section
+                    if (window.scrollY >= faqPosition - window.innerHeight) {
+                        // Hide the card
+                        card.visible = false;
+                    } else {
+                        // Show and animate the card
+                        card.visible = true;
+
+                        const maxRotation = Math.PI / 4;
+                        const yRotation = scrollPercent * maxRotation;
+                        const xRotation = Math.sin(scrollPercent * Math.PI) * (maxRotation / 2);
+
+                        card.rotation.y = yRotation;
+                        card.rotation.x = xRotation;
+
+                        // Move the card down as the user scrolls, but stop before the FAQ section
+                        const maxScroll = faqPosition - window.innerHeight;
+                        const currentScroll = Math.min(window.scrollY, maxScroll);
+                        const cardScrollPercent = currentScroll / maxScroll;
+                        card.position.y = 98 * 1.5 - (cardScrollPercent * 200);
+                    }
+                }
+
+                // Update navigation bar on scroll
+                const nav = document.querySelector('.topnav');
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
                 }
             });
 
-            scene.add(card);
+            const words = [' Sustainable', ' High-tech', ' Modern'];
+            let wordIndex = 0;
+            let charIndex = 0;
+            const changingText = document.getElementById('changing-text');
 
-            camera.position.z = 250;
-
-            renderer.render(scene, camera);
-        },
-        function (xhr) {
-            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-        },
-        function (error) {
-            console.error('An error happened', error);
-        }
-    );
-
-    window.addEventListener('resize', onWindowResize, false);
-
-    function onWindowResize() {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-
-    function animate() {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-    }
-    animate();
-
-    window.addEventListener('scroll', () => {
-        if (card) {
-            const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-
-            // Get the position of the FAQ section
-            const faqSection = document.getElementById('faq');
-            const faqPosition = faqSection.getBoundingClientRect().top + window.scrollY;
-
-            // Check if we've scrolled to the FAQ section
-            if (window.scrollY >= faqPosition - window.innerHeight) {
-                // Hide the card
-                card.visible = false;
-            } else {
-                // Show and animate the card
-                card.visible = true;
-
-                const maxRotation = Math.PI / 4;
-                const yRotation = scrollPercent * maxRotation;
-                const xRotation = Math.sin(scrollPercent * Math.PI) * (maxRotation / 2);
-
-                card.rotation.y = yRotation;
-                card.rotation.x = xRotation;
-
-                // Move the card down as the user scrolls, but stop before the FAQ section
-                const maxScroll = faqPosition - window.innerHeight;
-                const currentScroll = Math.min(window.scrollY, maxScroll);
-                const cardScrollPercent = currentScroll / maxScroll;
-                card.position.y = 98 * 1.5 - (cardScrollPercent * 200);
+            function typeWord() {
+                if (charIndex < words[wordIndex].length) {
+                    changingText.textContent += words[wordIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeWord, 100);
+                } else {
+                    setTimeout(eraseWord, 1000);
+                }
             }
-        }
 
-        // Update navigation bar on scroll
-        const nav = document.querySelector('.topnav');
-        if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    });
+            function eraseWord() {
+                if (charIndex > 0) {
+                    changingText.textContent = words[wordIndex].substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(eraseWord, 50);
+                } else {
+                    wordIndex = (wordIndex + 1) % words.length;
+                    setTimeout(typeWord, 500);
+                }
+            }
 
-    const words = ['Sustainable', 'High-tech', 'Modern'];
-    let wordIndex = 0;
-    let charIndex = 0;
-    const changingText = document.getElementById('changing-text');
+            typeWord();
 
-    function typeWord() {
-        if (charIndex < words[wordIndex].length) {
-            changingText.textContent += words[wordIndex].charAt(charIndex);
-            charIndex++;
-            setTimeout(typeWord, 100);
-        } else {
-            setTimeout(eraseWord, 1000);
-        }
-    }
+            function toggleMenu() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }
 
-    function eraseWord() {
-        if (charIndex > 0) {
-            changingText.textContent = words[wordIndex].substring(0, charIndex - 1);
-            charIndex--;
-            setTimeout(eraseWord, 50);
-        } else {
-            wordIndex = (wordIndex + 1) % words.length;
-            setTimeout(typeWord, 500);
-        }
-    }
-
-    typeWord();
-
-    function toggleMenu() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topnav") {
-            x.className += " responsive";
-        } else {
-            x.className = "topnav";
-        }
-    }
-
-    // FAQ accordion functionality
-    const questions = document.querySelectorAll('.question');
-    questions.forEach(question => {
-        question.addEventListener('click', () => {
-            question.classList.toggle('active');
-        });
-    });
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
+            // FAQ accordion functionality
+            const questions = document.querySelectorAll('.question');
+            questions.forEach(question => {
+                question.addEventListener('click', () => {
+                    question.classList.toggle('active');
+                });
             });
-        });
-    });
 
-    // Button click animation
-    const buttons = document.querySelectorAll('.product-button');
-    buttons.forEach(button => {
-        button.addEventListener('click', function (e) {
-            let x = e.clientX - e.target.offsetLeft;
-            let y = e.clientY - e.target.offsetTop;
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
 
-            let ripple = document.createElement('span');
-            ripple.style.left = `${x}px`;
-            ripple.style.top = `${y}px`;
+            // Button click animation
+            const buttons = document.querySelectorAll('.product-button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    let x = e.clientX - e.target.offsetLeft;
+                    let y = e.clientY - e.target.offsetTop;
 
-            this.appendChild(ripple);
+                    let ripple = document.createElement('span');
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
 
-            setTimeout(() => {
-                ripple.remove();
-            }, 600); // 600ms = duration of the ripple animation
-        });
-    });
-</script>
-</body>
+                    this.appendChild(ripple);
 
-</html>
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600); // 600ms = duration of the ripple animation
+                });
+            });
+        </script>
+    </body>
+    
+    </html>
