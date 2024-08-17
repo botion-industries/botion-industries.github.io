@@ -135,7 +135,7 @@
     display: inline-block;
     min-width: 150px;
     text-align: left;
-    padding-left: 20px;
+    padding-left: 15px;
 }
 
 
@@ -259,6 +259,17 @@
         }
 
         @media screen and (max-width: 750px) {
+            #hero h1 {
+        font-size: 2rem; /* Much smaller font for "Botion Card" */
+    }
+
+    #hero p {
+        font-size: 1rem; /* Smaller font for other text */
+    }
+
+    #changing-text {
+        min-width: 100px; /* Adjust minimum width for smaller screens */
+    }
             .topnav #myLinks {
                 display: none;
                 flex-direction: column;
