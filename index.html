@@ -12,98 +12,101 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/stripe@11.0.0/dist/stripe.js"></script>
     <style>
-        :root {
-            --primary-color: #2ecc71;
-            --text-color: #333;
-            --bg-color: #ffffff;
-            --secondary-bg: #f7f7f7;
-        }
-
-        body {
-            font-family: 'Roboto Mono', monospace;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .topnav {
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-        }
-
-        .topnav.scrolled {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .topnav .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .topnav #myLinks {
-            display: flex;
-        }
-
-        .topnav a {
-            color: var(--text-color);
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-            transition: color 0.3s ease;
-        }
-
-        .topnav a:hover {
-            color: var(--primary-color);
-        }
-
-        .topnav .icon {
-            display: none;
-        }
-
-        #sections-container {
-            position: relative;
-            z-index: 20;
-            background-color: var(--bg-color);
-        }
-
-        #content {
-            position: relative;
-            z-index: 1;
-            background: transparent;
-        }
-
-        #model-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-#hero {
+    :root {
+    --primary-color: #2ecc71;
+    --text-color: #333;
+    --bg-color: #ffffff;
+    --secondary-bg: #f7f7f7;
+    }
+    
+    body {
+    font-family: 'Roboto Mono', monospace;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    }
+    
+    .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    }
+    
+    .topnav {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    }
+    
+    .topnav.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .topnav .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+    }
+    
+    .topnav #myLinks {
+    display: flex;
+    }
+    
+    .topnav a {
+    color: var(--text-color);
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    transition: color 0.3s ease;
+    }
+    
+    .topnav a:hover {
+    color: var(--primary-color);
+    }
+    
+    .topnav .icon {
+    display: none;
+    }
+    
+    #sections-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 5%; /* Add some horizontal padding to the container */
+  box-sizing: border-box;
+}
+    
+    #content {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    }
+    
+    #model-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    }
+    
+    #hero {
     height: 80vh;
     display: flex;
     flex-direction: column;
@@ -111,16 +114,16 @@
     align-items: center;
     text-align: center;
     background: transparent;
-    padding-bottom: 50vh; /* Increased from 20vh to 25vh */
-}
-
-#hero h1 {
+    padding-bottom: 50vh;
+    }
+    
+    #hero h1 {
     font-size: 4rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-}
-
-#hero p {
+    }
+    
+    #hero p {
     font-size: 1.75rem;
     margin-top: 0;
     color: #000000;
@@ -128,176 +131,310 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}   
-#changing-text {
+    }
+    
+    #changing-text {
     color: var(--primary-color);
     font-weight: 600;
     display: inline-block;
     min-width: 150px;
     text-align: left;
     padding-left: 15px;
+    }
+    
+    .use-case {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    background-color: rgba(247, 247, 247, 1);
+    margin: 40px 0;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .section-content {
+    width: 100%;
+    }
+    
+    .product-button {
+    font-family: 'Roboto Mono', monospace;
+
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    }
+    
+    .product-button:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .product-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+    }
+    
+    @keyframes ripple {
+    0% {
+    transform: scale(0, 0);
+    opacity: 1;
+    }
+    20% {
+    transform: scale(25, 25);
+    opacity: 1;
+    }
+    100% {
+    opacity: 0;
+    transform: scale(40, 40);
+    }
+    }
+    
+    .product-button:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+    }
+    
+    .carousel-container {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    margin-top: 20px;
+    }
+    
+    .carousel {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .carousel img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    }
+    
+    .carousel img.active {
+    opacity: 1;
+    }
+    
+    .carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    }
+    
+    .carousel-controls button {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    color: #333;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    }
+    
+    .carousel-controls button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    }
+    
+    #faq {
+    background-color: var(--secondary-bg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin-top: 40px;
+    border-radius: 8px;
+    margin-bottom: 0px;
+    }
+    
+    .question {
+    margin-bottom: 20px;
+    }
+    
+    .question h3 {
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    }
+    
+    .question h3:hover {
+    color: var(--primary-color);
+    }
+    
+    .question p {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    }
+    
+    .question.active p {
+    max-height: 1000px;
+    opacity: 1;
+    }
+    
+    footer {
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    }
+    
+    @media screen and (max-width: 768px) {
+    #hero h1 {
+    font-size: 2rem;
+    }
+    
+    #hero p {
+    font-size: 1rem;
+    }
+    
+    #changing-text {
+    min-width: 100px;
+    }
+    
+    .topnav #myLinks {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    }
+    
+    .topnav a {
+    padding: 15px;
+    text-align: left;
+    }
+    
+    .topnav .icon {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    }
+    
+    .topnav.responsive #myLinks {
+    display: flex;
+    }
+    }
+    
+    @media screen and (min-width: 769px) {
+    .use-case {
+    flex-direction: row;
+    justify-content: space-between;
+    }
+    
+    .section-content {
+    width: calc(50% - 1rem);
+    }
+    
+    .carousel-container {
+    width: calc(50% - 1rem);
+    margin-top: 0;
+    }
+    }
+
+
+.scrolling-banner {
+  background-color: #2ecc71; /* Same green as navbar */
+  padding: 10px 0 0 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+    margin-bottom: 0;
+
 }
 
+.scrolling-banner p {
+  display: block;
+  font-weight: bold;
+  margin: 10px;
+  text-align: center;
+  color: white;
+  padding-bottom: 15px;
+}
 
-        h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
+.logo-container {
+  display: flex;
+  animation: scroll 20s linear infinite;
+}
 
-        .use-case {
-            background-color: rgba(247, 247, 247, 0.9);
-            margin: 40px 0;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+.logos {
+  display: flex;
+  align-items: center;
+}
 
-        .product-button {
-            background-color: var(--primary-color);
-            border: none;
-            color: white;
-            padding: 12px 24px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+.logos img {
+  height: 30px;
+  margin-right: 40px;
+}
 
-        .product-button:hover {
-            background-color: #27ae60;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
 
-        .product-button::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%);
-            transform-origin: 50% 50%;
-        }
+@media screen and (max-width: 768px) {
+  .scrolling-banner p {
+    font-size: 14px;
+      margin-bottom: 0;
 
-        @keyframes ripple {
-            0% {
-                transform: scale(0, 0);
-                opacity: 1;
-            }
-
-            20% {
-                transform: scale(25, 25);
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-                transform: scale(40, 40);
-            }
-        }
-
-        .product-button:focus:not(:active)::after {
-            animation: ripple 1s ease-out;
-        }
-
-        #faq {
-            background-color: var(--secondary-bg);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            margin-top: 40px;
-            border-radius: 8px;
-            margin-bottom: 0px;
-        }
-
-        .question {
-            margin-bottom: 20px;
-        }
-
-        .question h3 {
-            font-weight: 600;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .question h3:hover {
-            color: var(--primary-color);
-        }
-
-        .question p {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease, opacity 0.5s ease;
-            opacity: 0;
-        }
-
-        .question.active p {
-            max-height: 1000px;
-            opacity: 1;
-        }
-
-        footer {
-            background-color: var(--secondary-bg);
-            color: var(--text-color);
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
-        }
-
-        .topnav #myLinks {
-            padding-right: 10px;
-        }
-
-        @media screen and (max-width: 750px) {
-            #hero h1 {
-        font-size: 2rem; /* Much smaller font for "Botion Card" */
-    }
-
-    #hero p {
-        font-size: 1rem; /* Smaller font for other text */
-    }
-
-    #changing-text {
-        min-width: 100px; /* Adjust minimum width for smaller screens */
-    }
-            .topnav #myLinks {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                background-color: rgba(255, 255, 255, 0.95);
-            }
-
-            .topnav a {
-                padding: 15px;
-                text-align: left;
-            }
-
-            .topnav .icon {
-                display: block;
-                position: absolute;
-                right: 20px;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-
-            .topnav.responsive #myLinks {
-                display: flex;
-            }
-        }
+  }
+  
+  .logos img {
+    height: 20px;
+    margin-right: 20px;
+  }
+}
+#tech-pro {
+  margin-top: 0;
+  padding-top: 20px; /* Adjust as needed for spacing */
+}
     </style>
+
 </head>
 
 <body>
@@ -320,273 +457,388 @@
         <section id="hero">
             <div class="container">
                 <h1>Botion Card</h1>
-                <p>A business card that is  <span id="changing-text"></span></p>
+                <p>A business card that is <span id="changing-text"></span></p>
             </div>
         </section>
 
+        <div class="scrolling-banner">
+            <p>Used by professionals at top companies</p>
+            <div class="logo-container">
+                <div class="logos">
+                    <img src="apple.png" alt="Apple logo">
+                    <img src="ucsd.png" alt="UCSD logo">
+                    <img src="cisco.png" alt="Cisco logo">
+                    <img src="zoox.png" alt="Zoox logo">
+                    <img src="ucb.png" alt="UCB logo">
+                </div>
+                <div class="logos">
+                    <img src="apple.png" alt="Apple logo">
+                    <img src="ucsd.png" alt="UCSD logo">
+                    <img src="cisco.png" alt="Cisco logo">
+                    <img src="zoox.png" alt="Zoox logo">
+                    <img src="ucb.png" alt="UCB logo">
+                </div>
+            </div>
+        </div>
+
         <div id="sections-container">
             <section id="tech-pro" class="use-case">
-                <h2>For Tech Professionals</h2>
-                <p>Showcase your tech-savvy nature with our cutting-edge NFC-enabled cards.</p>
+                <div class="section-content">
+                    <h2>For Tech Professionals</h2>
+                    <p>Elevate your networking game with our cutting-edge NFC-enabled Botion Cards. As a tech professional, you
+                        understand the power of innovation – now, carry it in your pocket.</p>
+                    <ul>
+                        <li><strong>Instant Information Sharing:</strong> Share your contact details, portfolio, or latest project
+                            with a simple tap.</li>
+                        <li><strong>Customizable Digital Profile:</strong> Update your information on-the-fly, ensuring your network
+                            always has your latest details.</li>
+                        <li><strong>Tech-Forward Impression:</strong> Stand out at conferences, meetups, and interviews with a card
+                            that showcases your tech-savvy nature.</li>
+                        <li><strong>Eco-Friendly Networking:</strong> Reduce paper waste while demonstrating your commitment to
+                            sustainable technologies.</li>
+                    </ul>
+                    <p>Join the future of professional networking. With Botion Cards, you're not just sharing contact information –
+                        you're making a statement about your commitment to innovation and efficiency in the tech world.</p>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+
+                    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+                    <stripe-buy-button buy-button-id="buy_btn_1PocwdCJ07lOkLzsyzmCKSuX"
+                        publishable-key="pk_live_51PB3zUCJ07lOkLzsUiWON6eaKhTOT2ykpo2hQprF88V2EIuR8MO16ay9H9adAFjqgPoaezeSokIpqqtizxAz7gcl00TKsDTDIZ">
+                    </stripe-buy-button>
+                    </div>
+                </div>
+                <div class="carousel-container">
+                    <div class="carousel" id="tech-pro-carousel">
+                        <img src="1.png" alt="Botion Card Image 1" class="active">
+                        <img src="2.png" alt="Botion Card Image 2">
+                        <img src="3.png" alt="Botion Card Image 3">
+                        <img src="4.png" alt="Botion Card Image 4">
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="prev">&lt;</button>
+                        <button class="next">&gt;</button>
+                    </div>
+                </div>
             </section>
 
             <section id="small-biz" class="use-case">
-                <h2>For Small Businesses</h2>
-                <p>Make a big impression with our sleek, modern designs perfect for startups and SMEs.</p>
+                <div class="section-content">
+                    <h2>For Small Businesses</h2>
+                    <p>Make a big impression with our sleek, modern designs perfect for startups and SMEs.</p>
+                    <button class="product-button" data-product-id="small_biz_card">Coming Soon</button>
+                </div>
             </section>
 
             <section id="makerspace" class="use-case">
-                <h2>For Makerspaces</h2>
-                <h3>Made by a maker for makers!</h3>
-                <p>Inspire creativity with our customizable, tech-infused cards for innovators and makers. Our workshop
-                    offers a unique learning experience:</p>
-                <ol>
-                    <li><strong>Design Your Digital Identity:</strong> Craft your personal logo or stylize your name.
-                    </li>
-                    <li><strong>Master the Laser Cutter:</strong> Bring your design to life with precision fabrication.
-                    </li>
-                    <li><strong>Program Your NFC Chip:</strong> Dive into NFC technology, storing your info and
-                        unlocking possibilities.</li>
-                </ol>
-                <p>Leave with a unique business card that showcases your new design, fabrication, and programming
-                    skills. It's not just a card—it's a conversation starter and a testament to your maker journey!</p>
+                <div class="section-content">
+                    <h2>For Makerspaces</h2>
+                    <h3>Made by a maker for makers!</h3>
+                    <p>Inspire creativity with our customizable, tech-infused cards for innovators and makers. Our
+                        workshop offers a unique learning experience:</p>
+                    <ol>
+                        <li><strong>Design Your Digital Identity:</strong> Craft your personal logo or stylize your
+                            name.</li>
+                        <li><strong>Master the Laser Cutter:</strong> Bring your design to life with precision
+                            fabrication.</li>
+                        <li><strong>Program Your NFC Chip:</strong> Dive into NFC technology, storing your info and
+                            unlocking possibilities.</li>
+                    </ol>
+                    <p>Leave with a unique business card that showcases your new design, fabrication, and programming
+                        skills. It's not just a card—it's a conversation starter and a testament to your maker journey!
+                    </p>
 
-                <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-                    <img src="botion_design.png" alt="Laser Cutter in Action" style="width: 48%; border-radius: 10px;">
-                    <img src="botion_laser.JPG" alt="Finished Botion Card" style="width: 48%; border-radius: 10px;">
-                </div>
-
-                <div style="text-align: center; margin-top: 30px;">
-                    <script async src="https://js.stripe.com/v3/buy-button.js" ></script>
-                    <stripe-buy-button buy-button-id="buy_btn_1PkfaLCJ07lOkLzsYYCOGsc6"
-                        publishable-key="pk_live_51PB3zUCJ07lOkLzsUiWON6eaKhTOT2ykpo2hQprF88V2EIuR8MO16ay9H9adAFjqgPoaezeSokIpqqtizxAz7gcl00TKsDTDIZ" style="width: 50%">
-                    </stripe-buy-button>
-                </div>
-            </section>
-
-            <section id="faq">
-                <h2>Frequently Asked Questions</h2>
-                <div class="question">
-                    <h3>What makes Botion Cards high-tech?</h3>
-                    <p>Our cards feature NFC technology, allowing instant digital information sharing with a simple tap.
-                        If you've used Apple Pay or tap tickets for public transit, you're already familiar with how our
-                        Botion Cards work.</p>
-                </div>
-                <div class="question">
-                    <h3>Are Botion Cards sustainable?</h3>
-                    <p>Yes, we use eco-friendly materials and our digital features reduce the need for reprints. By
-                        transitioning to digital information sharing, our customers save thousands of sheets of paper
-                        each year, significantly lowering their environmental footprint and reducing costs associated
-                        with printing and reprinting traditional business cards.</p>
-                </div>
-                <div class="question">
-                    <h3>How do Botion Cards save costs and paper?</h3>
-                    <p>Switching to Botion Cards can result in substantial cost savings. Traditional business cards
-                        often require frequent updates and reprints, leading to continuous expenses. With Botion Cards,
-                        updates are digital and instant, eliminating the need for reprints. On average, users save
-                        thousands of sheets of paper per year, contributing to both financial savings and environmental
-                        sustainability.</p>
-                </div>
-                <div class="question">
-                    <h3>Are Botion Cards compatible with my device?</h3>
-                    <p>Yes, Botion Cards are compatible with any modern smartphone that supports NFC technology. This
-                        includes most recent models of iOS and Android devices, ensuring a seamless experience for
-                        sharing your information digitally.</p>
-                </div>
-                <div class="question">
-                    <h3>How do I program my Botion Card?</h3>
-                    <p>Programming your Botion Card is simple and can be done with our open-source app available on the
-                        App Store called BotionNFC. For Android users, the NFC Tools app works seamlessly with Botion
-                        Cards, allowing you to easily update and manage your digital information.</p>
-                </div>
-            </section>
-        </div>
-
-        <footer>
-            <p>&copy; 2024 Botion Cards. All rights reserved.</p>
-        </footer>
+                    <div style="text-align: center; margin-top: 30px;">
+                        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+                        <stripe-buy-button buy-button-id="buy_btn_1PkfaLCJ07lOkLzsYYCOGsc6"
+                            publishable-key="pk_live_51PB3zUCJ07lOkLzsUiWON6eaKhTOT2ykpo2hQprF88V2EIuR8MO16ay9H9adAFjqgPoaezeSokIpqqtizxAz7gcl00TKsDTDIZ"
+                            style="width: 50%">
+                        </stripe-buy-button>
+                    </div>
+</div>
+<div class="carousel-container">
+    <div class="carousel" id="makerspace-carousel">
+        <img src="botion_design.png" alt="Laser Cutter in Action" class="active">
+        <img src="botion_laser.JPG" alt="Finished Botion Card">
     </div>
+    <div class="carousel-controls">
+        <button class="prev">&lt;</button>
+        <button class="next">&gt;</button>
+    </div>
+</div>
+</section>
 
-    <script>
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({
-            alpha: true,
-            antialias: true
-        });
+<section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="question">
+        <h3>What makes Botion Cards high-tech?</h3>
+        <p>Our cards feature NFC technology, allowing instant digital information sharing with a simple tap. If you've
+            used Apple Pay or tap tickets for public transit, you're already familiar with how our Botion Cards work.
+        </p>
+    </div>
+    <div class="question">
+        <h3>Are Botion Cards sustainable?</h3>
+        <p>Yes, we use eco-friendly materials and our digital features reduce the need for reprints. By transitioning to
+            digital information sharing, our customers save thousands of sheets of paper each year, significantly
+            lowering their environmental footprint and reducing costs associated with printing and reprinting
+            traditional business cards.</p>
+    </div>
+    <div class="question">
+        <h3>How do Botion Cards save costs and paper?</h3>
+        <p>Switching to Botion Cards can result in substantial cost savings. Traditional business cards often require
+            frequent updates and reprints, leading to continuous expenses. With Botion Cards, updates are digital and
+            instant, eliminating the need for reprints. On average, users save thousands of sheets of paper per year,
+            contributing to both financial savings and environmental sustainability.</p>
+    </div>
+    <div class="question">
+        <h3>Are Botion Cards compatible with my device?</h3>
+        <p>Yes, Botion Cards are compatible with any modern smartphone that supports NFC technology. This includes most
+            recent models of iOS and Android devices, ensuring a seamless experience for sharing your information
+            digitally.</p>
+    </div>
+    <div class="question">
+        <h3>How do I program my Botion Card?</h3>
+        <p>Programming your Botion Card is simple and can be done with our open-source app available on the App Store
+            called <a href="https://apps.apple.com/us/app/botionnfc/id6476791734">BotionNFC</a>. For Android users, the NFC Tools app works seamlessly with Botion Cards, allowing you to
+            easily update and manage your digital information.</p>
+    </div>
+</section>
+</div>
 
-        renderer.setPixelRatio(window.devicePixelRatio);
+<footer>
+    <p>&copy; 2024 Botion Cards. All rights reserved.</p>
+</footer>
+</div>
+
+<script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({
+        alpha: true,
+        antialias: true
+    });
+
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('model-container').appendChild(renderer.domElement);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(1, 1, 1);
+    scene.add(directionalLight);
+
+    let card;
+
+    const loader = new THREE.GLTFLoader();
+    loader.load(
+        'card.gltf',
+        function (gltf) {
+            card = gltf.scene;
+
+            const scaleFactor = 1500;
+            card.scale.set(scaleFactor, scaleFactor, scaleFactor);
+
+            card.position.set(-128 * scaleFactor / 1000, 98 * scaleFactor / 1000, -100);
+
+            card.traverse((child) => {
+                if (child.isMesh) {
+                    child.material.side = THREE.DoubleSide;
+                    child.material.needsUpdate = true;
+                }
+            });
+
+            scene.add(card);
+
+            camera.position.z = 250;
+
+            renderer.render(scene, camera);
+        },
+        function (xhr) {
+            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        },
+        function (error) {
+            console.error('An error happened', error);
+        }
+    );
+
+    window.addEventListener('resize', onWindowResize, false);
+
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('model-container').appendChild(renderer.domElement);
+    }
 
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-        scene.add(ambientLight);
-        const directionalLight = new THREE.DirectionalLight(0xffffff,0.8);
-            directionalLight.position.set(1, 1, 1);
-            scene.add(directionalLight);
+    function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
+    animate();
 
-            let card;
+    window.addEventListener('scroll', () => {
+        if (card) {
+            const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
 
-            const loader = new THREE.GLTFLoader();
-            loader.load(
-                'card.gltf',
-                function (gltf) {
-                    card = gltf.scene;
+            // Get the position of the FAQ section
+            const faqSection = document.getElementById('faq');
+            const faqPosition = faqSection.getBoundingClientRect().top + window.scrollY;
 
-                    const scaleFactor = 1500;
-                    card.scale.set(scaleFactor, scaleFactor, scaleFactor);
+            // Check if we've scrolled to the FAQ section
+            if (window.scrollY >= faqPosition - window.innerHeight) {
+                // Hide the card
+                card.visible = false;
+            } else {
+                // Show and animate the card
+                card.visible = true;
 
-                    card.position.set(-128 * scaleFactor / 1000, 98 * scaleFactor / 1000, -100);
+                const maxRotation = Math.PI / 4;
+                const yRotation = scrollPercent * maxRotation;
+                const xRotation = Math.sin(scrollPercent * Math.PI) * (maxRotation / 2);
 
-                    card.traverse((child) => {
-                        if (child.isMesh) {
-                            child.material.side = THREE.DoubleSide;
-                            child.material.needsUpdate = true;
-                        }
-                    });
+                card.rotation.y = yRotation;
+                card.rotation.x = xRotation;
 
-                    scene.add(card);
-
-                    camera.position.z = 250;
-
-                    renderer.render(scene, camera);
-                },
-                function (xhr) {
-                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-                },
-                function (error) {
-                    console.error('An error happened', error);
-                }
-            );
-
-            window.addEventListener('resize', onWindowResize, false);
-
-            function onWindowResize() {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
+                // Move the card down as the user scrolls, but stop before the FAQ section
+                const maxScroll = faqPosition - window.innerHeight;
+                const currentScroll = Math.min(window.scrollY, maxScroll);
+                const cardScrollPercent = currentScroll / maxScroll;
+                card.position.y = 98 * 1.5 - (cardScrollPercent * 200);
             }
+        }
 
-            function animate() {
-                requestAnimationFrame(animate);
-                renderer.render(scene, camera);
-            }
-            animate();
+        // Update navigation bar on scroll
+        const nav = document.querySelector('.topnav');
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
 
-            window.addEventListener('scroll', () => {
-                if (card) {
-                    const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    const words = [' Sustainable', ' High-tech', ' Modern'];
+    let wordIndex = 0;
+    let charIndex = 0;
+    const changingText = document.getElementById('changing-text');
 
-                    // Get the position of the FAQ section
-                    const faqSection = document.getElementById('faq');
-                    const faqPosition = faqSection.getBoundingClientRect().top + window.scrollY;
+    function typeWord() {
+        if (charIndex < words[wordIndex].length) {
+            changingText.textContent += words[wordIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(typeWord, 100);
+        } else {
+            setTimeout(eraseWord, 1000);
+        }
+    }
 
-                    // Check if we've scrolled to the FAQ section
-                    if (window.scrollY >= faqPosition - window.innerHeight) {
-                        // Hide the card
-                        card.visible = false;
-                    } else {
-                        // Show and animate the card
-                        card.visible = true;
+    function eraseWord() {
+        if (charIndex > 0) {
+            changingText.textContent = words[wordIndex].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(eraseWord, 50);
+        } else {
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(typeWord, 500);
+        }
+    }
 
-                        const maxRotation = Math.PI / 4;
-                        const yRotation = scrollPercent * maxRotation;
-                        const xRotation = Math.sin(scrollPercent * Math.PI) * (maxRotation / 2);
+    typeWord();
 
-                        card.rotation.y = yRotation;
-                        card.rotation.x = xRotation;
+    function toggleMenu() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
 
-                        // Move the card down as the user scrolls, but stop before the FAQ section
-                        const maxScroll = faqPosition - window.innerHeight;
-                        const currentScroll = Math.min(window.scrollY, maxScroll);
-                        const cardScrollPercent = currentScroll / maxScroll;
-                        card.position.y = 98 * 1.5 - (cardScrollPercent * 200);
-                    }
-                }
+    // FAQ accordion functionality
+    const questions = document.querySelectorAll('.question');
+    questions.forEach(question => {
+        question.addEventListener('click', () => {
+            question.classList.toggle('active');
+        });
+    });
 
-                // Update navigation bar on scroll
-                const nav = document.querySelector('.topnav');
-                if (window.scrollY > 50) {
-                    nav.classList.add('scrolled');
-                } else {
-                    nav.classList.remove('scrolled');
-                }
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
             });
+        });
+    });
 
-            const words = [' Sustainable', ' High-tech', ' Modern'];
-            let wordIndex = 0;
-            let charIndex = 0;
-            const changingText = document.getElementById('changing-text');
+    // Button click animation
+    const buttons = document.querySelectorAll('.product-button');
+    buttons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            let x = e.clientX - e.target.offsetLeft;
+            let y = e.clientY - e.target.offsetTop;
 
-            function typeWord() {
-                if (charIndex < words[wordIndex].length) {
-                    changingText.textContent += words[wordIndex].charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeWord, 100);
-                } else {
-                    setTimeout(eraseWord, 1000);
-                }
+            let ripple = document.createElement('span');
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600); // 600ms = duration of the ripple animation
+        });
+    });
+
+    // Carousel functionality
+    document.addEventListener('DOMContentLoaded', function () {
+            const logoContainer = document.querySelector('.logo-container');
+        const logos = logoContainer.querySelector('.logos');
+
+        // Clone the logos multiple times to ensure continuous scrolling
+        for (let i = 0; i < 20; i++) {
+            logoContainer.appendChild(logos.cloneNode(true));
+        }
+
+        // Adjust animation duration based on content width
+        const totalWidth = logos.offsetWidth * 4; // 4 sets of logos
+        const duration = totalWidth / 50; // Adjust speed as needed
+        logoContainer.style.animationDuration = `${duration}s`;
+        
+        function setupCarousel(carouselId) {
+            const carousel = document.querySelector(`#${carouselId}`);
+            const images = carousel.querySelectorAll('img');
+            const prevBtn = carousel.parentElement.querySelector('.prev');
+            const nextBtn = carousel.parentElement.querySelector('.next');
+            let currentIndex = 0;
+
+            function showImage(index) {
+                images.forEach(img => img.classList.remove('active'));
+                images[index].classList.add('active');
             }
 
-            function eraseWord() {
-                if (charIndex > 0) {
-                    changingText.textContent = words[wordIndex].substring(0, charIndex - 1);
-                    charIndex--;
-                    setTimeout(eraseWord, 50);
-                } else {
-                    wordIndex = (wordIndex + 1) % words.length;
-                    setTimeout(typeWord, 500);
-                }
+            function nextImage() {
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
             }
 
-            typeWord();
-
-            function toggleMenu() {
-                var x = document.getElementById("myTopnav");
-                if (x.className === "topnav") {
-                    x.className += " responsive";
-                } else {
-                    x.className = "topnav";
-                }
+            function prevImage() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showImage(currentIndex);
             }
 
-            // FAQ accordion functionality
-            const questions = document.querySelectorAll('.question');
-            questions.forEach(question => {
-                question.addEventListener('click', () => {
-                    question.classList.toggle('active');
-                });
-            });
+            nextBtn.addEventListener('click', nextImage);
+            prevBtn.addEventListener('click', prevImage);
 
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
+            // Auto-advance every 5 seconds
+            setInterval(nextImage, 5000);
+        }
 
-            // Button click animation
-            const buttons = document.querySelectorAll('.product-button');
-            buttons.forEach(button => {
-                button.addEventListener('click', function (e) {
-                    let x = e.clientX - e.target.offsetLeft;
-                    let y = e.clientY - e.target.offsetTop;
+        // Setup carousels
+        setupCarousel('tech-pro-carousel');
+        setupCarousel('makerspace-carousel');
+    });
+</script>
+</body>
 
-                    let ripple = document.createElement('span');
-                    ripple.style.left = `${x}px`;
-                    ripple.style.top = `${y}px`;
-
-                    this.appendChild(ripple);
-
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 600); // 600ms = duration of the ripple animation
-                });
-            });
-        </script>
-    </body>
-    
-    </html>
+</html>
